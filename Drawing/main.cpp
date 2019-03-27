@@ -1,6 +1,9 @@
-//================================================
-// YOUR NAME GOES HERE <-----------------  
-//================================================
+//=====================================================
+// Natalie Killian
+// March 29th, 2019
+// Programming Assignment #6
+// Description: Drawing
+//=====================================================
 #include <iostream>
 #include <fstream>
 using namespace std;

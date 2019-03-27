@@ -13,6 +13,8 @@ class ShapeMgr
 private:
 	
 public:
+	vector <DrawingShape*> shapeHolder;
+
 	ShapeMgr()
 	{
 		

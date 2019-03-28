@@ -23,7 +23,7 @@ public:
 		sMgr = mgr;
 	
 		// define blue button
-		Vector2f pos1(95, 100);
+		Vector2f pos1(110, 100);
 		blueBtn.setPosition(pos1);
 		blueBtn.setRadius(10);
 		blueBtn.setOutlineThickness(2);
@@ -31,7 +31,7 @@ public:
 		blueBtn.setFillColor(Color::Blue);
 
 		// define red button
-		Vector2f pos2(95, 175);
+		Vector2f pos2(110, 175);
 		redBtn.setPosition(pos2);
 		redBtn.setRadius(10);
 		redBtn.setOutlineThickness(2);
@@ -39,7 +39,7 @@ public:
 		redBtn.setFillColor(Color::Transparent);
 
 		// define green button
-		Vector2f pos3(95, 250);
+		Vector2f pos3(110, 250);
 		greenBtn.setPosition(pos3);
 		greenBtn.setRadius(10);
 		greenBtn.setOutlineThickness(2);
@@ -47,7 +47,7 @@ public:
 		greenBtn.setFillColor(Color::Transparent);		
 
 		// define circle shape selection button
-		Vector2f pos4(95, 400);
+		Vector2f pos4(110, 400);
 		circleBtn.setPosition(pos4);
 		circleBtn.setRadius(10);
 		circleBtn.setOutlineThickness(2);
@@ -55,7 +55,7 @@ public:
 		circleBtn.setFillColor(Color::White);
 
 		// define square shape selection button
-		Vector2f sqPos1(97, 475);
+		Vector2f sqPos1(112, 475);
 		squareBtn.setPosition(sqPos1);
 		squareBtn.setOutlineColor(Color::White);
 		squareBtn.setOutlineThickness(2);
@@ -114,11 +114,11 @@ public:
 			die("couldn't load font");
 		// title
 		Text colorTitle("Color Selection", font, 25);
-		colorTitle.setPosition(30, 25);
+		colorTitle.setPosition(45, 25);
 		win.draw(colorTitle);
 		// title
 		Text shapeTitle("Shape Selection", font, 25);
-		shapeTitle.setPosition(30, 325);
+		shapeTitle.setPosition(43, 325);
 		win.draw(shapeTitle);
 	}
 

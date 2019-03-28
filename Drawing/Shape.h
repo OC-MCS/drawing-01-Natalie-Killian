@@ -4,6 +4,14 @@
 using namespace std;
 using namespace sf;
 
+// structure of data to write to file
+struct Record
+{
+	int colorNum;
+	Vector2f pos;
+	ShapeEnum shape;
+};
+
 // DrawingShape is an abstract base class 
 // for Circle and Square
 class DrawingShape 
@@ -19,6 +27,7 @@ public:
 		shape = s;
 	}
 	virtual void draw(RenderWindow &w) = 0;
+	virtual Record getFileRecord() = 0;
 };
 
 // Circle class is derived from DrawingShape
@@ -32,12 +41,22 @@ public:
 		newCircle.setRadius(20.0);
 		newCircle.setOutlineThickness(2);
 		newCircle.setOutlineColor(c);
-		// for just an outlined button do Color::Transparent
+		// for just an outlined button, do Color::Transparent
 		newCircle.setFillColor(c);
 	}
 	void draw(RenderWindow &window)
 	{
 		window.draw(newCircle);
+	}
+	Record getFileRecord()
+	{
+		Record tempRec;
+		Color tempColor = newCircle.getFillColor();
+		tempRec.colorNum = tempColor.toInteger();
+		tempRec.pos = newCircle.getPosition();
+		tempRec.shape = CIRCLE;	
+
+		return tempRec;
 	}
 };
 
@@ -59,5 +78,15 @@ public:
 	void draw(RenderWindow &window)
 	{
 		window.draw(newSquare);
+	}
+	Record getFileRecord()
+	{
+		Record tempRec;
+		Color tempColor = newSquare.getFillColor();
+		tempRec.colorNum = tempColor.toInteger();
+		tempRec.pos = newSquare.getPosition();
+		tempRec.shape = SQUARE;
+
+		return tempRec;
 	}
 };

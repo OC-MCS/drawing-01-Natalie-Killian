@@ -1,3 +1,11 @@
+//=====================================================
+// Natalie Killian
+// March 29th, 2019
+// Programming Assignment #6
+// Description: Drawing
+// File Name: DrawingUI.h
+//		Handles user interface from drawing area
+//=====================================================
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -11,11 +19,11 @@ private:
 	RectangleShape outerBorder;
 	RectangleShape leftBorder;
 public:
-	DrawingUI(Vector2f p)
-	{
+	// empty constructor
+	DrawingUI(Vector2f p){}
 
-	}
-
+	// draws window with borders around user's drawing window and
+	// the settings available
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
 		// Draw outer border
@@ -43,6 +51,8 @@ public:
 		}
 	}
 	
+	// sets the bounds for the window the user is able to draw in and 
+	// check to see if the mouse is within the drawing window/canvas
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
 		bool inCanvas = false;

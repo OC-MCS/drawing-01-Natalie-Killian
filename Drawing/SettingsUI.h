@@ -1,3 +1,11 @@
+//========================================================
+// Natalie Killian
+// March 29th, 2019
+// Programming Assignment #6
+// Description: Drawing
+// File Name: SettingsUI.h
+//		Handles user interaction and drawing the settings
+//========================================================
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -18,6 +26,7 @@ private:
 	CircleShape circleBtn;
 	SettingsMgr *sMgr;
 public:
+	// constructor that defines all buttons
 	SettingsUI(SettingsMgr *mgr)
 	{
 		sMgr = mgr;
@@ -28,7 +37,10 @@ public:
 		blueBtn.setRadius(10);
 		blueBtn.setOutlineThickness(2);
 		blueBtn.setOutlineColor(Color::Blue);
-		blueBtn.setFillColor(Color::Blue);
+		if (mgr->getCurColor() == Color::Blue)
+			blueBtn.setFillColor(Color::Blue);
+		else
+			blueBtn.setFillColor(Color::Transparent);
 
 		// define red button
 		Vector2f pos2(110, 175);
@@ -37,6 +49,10 @@ public:
 		redBtn.setOutlineThickness(2);
 		redBtn.setOutlineColor(Color::Red);
 		redBtn.setFillColor(Color::Transparent);
+		if (mgr->getCurColor() == Color::Red)
+			redBtn.setFillColor(Color::Red);
+		else
+			redBtn.setFillColor(Color::Transparent);
 
 		// define green button
 		Vector2f pos3(110, 250);
@@ -45,6 +61,10 @@ public:
 		greenBtn.setOutlineThickness(2);
 		greenBtn.setOutlineColor(Color::Green);
 		greenBtn.setFillColor(Color::Transparent);		
+		if (mgr->getCurColor() == Color::Green)
+			greenBtn.setFillColor(Color::Green);
+		else
+			greenBtn.setFillColor(Color::Transparent);
 
 		// define circle shape selection button
 		Vector2f pos4(110, 400);
@@ -53,16 +73,24 @@ public:
 		circleBtn.setOutlineThickness(2);
 		circleBtn.setOutlineColor(Color::White);
 		circleBtn.setFillColor(Color::White);
+		if (mgr->getCurShape() == CIRCLE)
+			circleBtn.setFillColor(Color::White);
+		else
+			circleBtn.setFillColor(Color::Transparent);
 
 		// define square shape selection button
-		Vector2f sqPos1(112, 475);
-		squareBtn.setPosition(sqPos1);
+		Vector2f pos5(112, 475);
+		squareBtn.setPosition(pos5);
 		squareBtn.setOutlineColor(Color::White);
 		squareBtn.setOutlineThickness(2);
 		squareBtn.setSize(Vector2f(15, 15));
 		squareBtn.setFillColor(Color::Transparent);
-
+		if (mgr->getCurShape() == SQUARE)
+			squareBtn.setFillColor(Color::White);
+		else
+			squareBtn.setFillColor(Color::Transparent);
 	}
+	// function that checks buttons to see which settings have veen selected
 	void handleMouseUp(Vector2f mouse)
 	{
 		// check if mouse is currently over blueBtn
@@ -100,6 +128,7 @@ public:
 		}		
 	}
 
+	// draws the window with all buttons and labels
 	void draw(RenderWindow& win)
 	{
 		win.draw(blueBtn);
@@ -109,14 +138,15 @@ public:
 		win.draw(squareBtn);
 
 		// define color and shape label header
-		Font font;		// first load font
+		// first load font
+		Font font;
 		if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
 			die("couldn't load font");
-		// title
+		// color selection title
 		Text colorTitle("Color Selection", font, 25);
 		colorTitle.setPosition(45, 25);
 		win.draw(colorTitle);
-		// title
+		// shape selection title
 		Text shapeTitle("Shape Selection", font, 25);
 		shapeTitle.setPosition(43, 325);
 		win.draw(shapeTitle);
